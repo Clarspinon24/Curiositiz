@@ -1,0 +1,27 @@
+// FontAwesome
+@import "@fortawesome/fontawesome-free/scss/fontawesome";
+@import "@fortawesome/fontawesome-free/scss/solid";
+@import "@fortawesome/fontawesome-free/scss/regular";
+@import "@fortawesome/fontawesome-free/scss/brands";
+
+// Bootstrap
+@import "bootstrap/scss/bootstrap";
+
+// Imports variables
+@import "variables";
+
+// Imports partials
+@import "./partials/base.scss";
+@import "./partials/panels.scss";
+@import "./partials/forms.scss";
+@import "./partials/content.scss";
+@import "./partials/header.scss";
+@import "./partials/buttons.scss";
+@import "./partials/sidebar.scss";
+@import "./partials/card.scss";
+@import "./partials/modal.scss";
+@import "./partials/home.scss";
+@import "./partials/article.scss";
+@import "./partials/pagination.scss";
+@import "./partials/ateliers.scss";
+@import "./partials/about.scss";

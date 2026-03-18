@@ -1,0 +1,14 @@
+.img-box{
+  height: 100px;
+  width: 100%;
+}
+
+.workshop-img{
+  position: relative;
+}
+
+@media screen and (max-width: 1100px) {
+  .workshop-img{
+    display: none;
+  }
+}

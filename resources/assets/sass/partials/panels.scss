@@ -1,0 +1,48 @@
+/* Left & Right Panel for login and signup forms*/
+.wrapper {
+  display: flex;
+}
+
+.leftpanel {
+  background-image: linear-gradient(0deg, #3097D1 0%, #1d3557 100%);
+  height: 100vh;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem;
+}
+
+.rightpanel {
+  height: 100vh;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem;
+}
+
+.mobile-display {
+  display: none;
+}
+@media screen and (max-width: 1000px) {
+  .wrapper {
+    flex-direction: column;
+  }
+
+  .leftpanel {
+    display: none;
+  }
+
+  .rightpanel {
+    width: 100%;
+    height: 100%;
+  }
+
+  .mobile-display {
+    display: block;
+    padding-bottom: 2rem;
+  }
+}

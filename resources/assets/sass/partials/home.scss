@@ -1,0 +1,97 @@
+.header-gradient {
+  background-image: url("../../images/index_picture.jpg");
+  background-size: cover;
+}
+.header-light{
+  background-color: $white !important;
+}
+.feature-content{
+  padding-top: 70px !important;
+  padding-bottom: 20px !important;
+}
+
+.services-content{
+  margin-top: -100px !important;
+}
+.services-content i{
+  color: $raspberry;
+}
+
+/*.subscribe-content {
+  background-image: linear-gradient(0deg, $raspberry 0%, $strawberry 100%);
+  padding-top: 100px;
+  padding-bottom: 100px;
+  margin-top: -110px;
+}*/
+.footer-down{
+  background-color: $raspberry;
+  color: $white;
+}
+a .logo-light{
+  fill: $raspberry !important;
+}
+
+.Icon_index{
+  width: 100px;
+  height: auto;
+}
+
+#big-title{
+  color: $raspberry;
+}
+
+.blue-box{
+  min-height: 44px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: $raspberry;
+  border-radius: 4px;
+  color: white;
+  font-size: 15px;
+  padding: 10px;
+  -webkit-box-shadow: 20px 25px 37px -16px rgba(102,89,102,0.75);
+  -moz-box-shadow: 20px 25px 37px -16px rgba(102,89,102,0.75);
+  box-shadow: 20px 25px 37px -16px rgba(102,89,102,0.75);
+
+  @media screen and (max-width: 1100px) {
+    //height: 105px;
+    padding: 5px;
+  }
+}
+
+.header-home-text {
+  margin-bottom: 0;
+
+  @media screen and (max-width: 1100px) {
+    & {
+      font-size: 13px;
+      line-height: 17px;
+    }
+  }
+}
+
+
+.img-home{
+  width: 50px;
+  height: auto;
+}
+
+@media screen and (max-width: 1100px) {
+  .home-infos {
+    margin-top: 70px;
+  }
+
+  #big-title{
+    font-size: 20px;
+    color: $raspberry;
+  }
+
+  #mid-title{
+    font-size: 15px;
+  }
+
+  .small-title{
+    font-size: 13px;
+  }
+}

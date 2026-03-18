@@ -1,0 +1,234 @@
+.card {
+  margin-bottom: 30px;
+}
+
+.card-title {
+  color: $raspberry;
+  font-size: 16pt;
+  text-transform: uppercase;
+  font-weight: bolder;
+}
+
+.card-text {
+  font-size: 10pt !important;
+  margin: 1rem 0 1rem;
+  opacity: 0.7;
+}
+.card-link{
+  color: $grey;
+  font-size: 9pt;
+}
+
+.card-date {
+  color: $raspberry;
+  opacity: 0.7;
+}
+
+.card-info {
+  font-weight: bold;
+  color: $raspberry;
+  opacity: 0.7;
+}
+
+.card-profil {
+  width: 150px;
+  height: auto;
+  border-radius: 50%;
+  margin: 30px;
+  object-fit: cover;
+}
+
+.card-age {
+  border: 2px solid $raspberry;
+  border-radius: 100px;
+  padding: 2rem;
+  color: $raspberry;
+  background-color: $white;
+  margin-top: -70px;
+  margin-bottom: 20px;
+  width: 115px;
+}
+
+.card-img-top {
+  object-fit: cover;
+  width: 100% !important;
+  height: 200px !important;
+}
+
+.card-img-left {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.card-button-group {
+  display: flex;
+  justify-content: space-around;
+}
+
+.card-button {
+  border: 1px solid $raspberry;
+  border-radius: 50px;
+  background-color: inherit;
+  color: $raspberry !important;
+  padding: 0.5rem;
+  font-size: 10pt;
+  width: 100%;
+  margin: 0.5rem;
+  text-align: center;
+}
+
+.card-button:hover {
+  background-color: $raspberry;
+  color: $white !important;
+  text-decoration: none;
+  border: none;
+}
+
+.card-button-outline {
+  border: 1px solid $raspberry;
+  border-radius: 50px;
+  color: $raspberry;
+  padding: 0.5rem;
+  font-size: 10pt;
+  width: 100%;
+  margin: 0.5rem;
+  text-align: center;
+}
+
+.card-button-outline:hover {
+  background-color: $raspberry;
+  color: $white;
+  text-decoration: none;
+  border: none;
+}
+.card-content-info{
+  display: flex;
+}
+.card-icon{
+  color: $raspberry;
+  margin-right: 1rem;
+  vertical-align: middle;
+}
+.card-icon:hover{
+  color: $strawberry;
+}
+.card-counter{
+  font-size: 10pt;
+  margin-top: 0.5rem;
+}
+.card-info-date{
+  font-size: 15pt;
+  font-weight: bold;
+}
+.card-info-time{
+  opacity: 0.7;
+}
+.card-section{
+  border-left: 1px solid rgba($raspberry, 0.3);
+}
+.card-flex{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.card-flex-end{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.card-workshop-waiting,
+.card-workshop-inactive,
+.card-workshop{
+  border: solid 1px rgba(0,0,0,.125);
+  margin-bottom: 10px;
+  color: $raspberry;
+}
+
+.card-workshop-inactive{
+  opacity: 0.5;
+  color: #5a6268;
+}
+
+.card-workshop-waiting {
+  background-color: $raspberry;
+  color: $white;
+}
+
+.card-important-message {
+  display: none;
+  z-index: 100;
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  opacity: 0.9;
+  background-color: $raspberry;
+  color: $white;
+  font-size: 16px;
+  font-weight: bold;
+
+  .card-workshop-waiting & {
+    display: flex;
+  }
+}
+
+.card-workshop-img{
+   background-color: rgba(0,0,0,.125);
+   background-repeat: no-repeat;
+   position: relative;
+   margin: auto;
+   top: 0;
+   bottom: 0;
+   right: 0;
+   left: 0;
+   background-color: #5a6268;
+ }
+
+.card-workshop-title{
+  font-size: 20px;
+  font-weight: bold;
+  color: $raspberry;
+}
+
+.card-workshop-price{
+  color: $raspberry;
+}
+
+.card-header{
+  background-color: transparent;
+  border-bottom: none;
+  img{
+    max-width: 100%;
+    max-height: 100%;
+    position: center;
+    margin: auto;
+  }
+}
+
+
+@media screen and (max-width: 580px) {
+  .card-workshop{
+    .card-workshop-title{
+      font-size: 12px;
+    }
+    font-size: 10px;
+  }
+
+  .card-workshop-waiting,
+  .card-workshop-inactive{
+    .card-workshop-title{
+      font-size: 12px;
+    }
+    font-size: 10px;
+  }
+  .card-button-outline{
+    display: block;
+    font-size: 10px;
+  }
+}
