@@ -3,12 +3,12 @@
 
         <h1 class="text-2xl font-extrabold mb-6 bg-clip-text text-transparent"
             style="background-image: linear-gradient(90deg, #6366f1, #ec4899); -webkit-background-clip: text;">
-            💬 Mes conversations
+             Mes conversations
         </h1>
 
         @if($users->isEmpty())
             <div class="text-center py-16 text-gray-400">
-                <p class="text-5xl mb-4">🐱</p>
+           
                 <p class="font-semibold">Aucun utilisateur pour l'instant.</p>
             </div>
         @else
