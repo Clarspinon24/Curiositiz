@@ -18,11 +18,12 @@ class User extends Authenticatable
      *
      * @var list<string>
      */
-    protected $fillable = [
-        'name',
-        'email',
-        'password',
-    ];
+   protected $fillable = [
+    'name',
+    'email',
+    'password',
+    'last_seen_at', 
+];
 
     /**
      * The attributes that should be hidden for serialization.
@@ -39,11 +40,39 @@ class User extends Authenticatable
      *
      * @return array<string, string>
      */
-    protected function casts(): array
+    protected $casts = [
+        'email_verified_at' => 'datetime',
+        'password'          => 'hashed',
+        'last_seen_at'      => 'datetime', 
+    ];
+    public function isOnline(): bool
     {
-        return [
-            'email_verified_at' => 'datetime',
-            'password' => 'hashed',
-        ];
+    // Considéré en ligne si actif dans les 5 dernières minutes
+    return $this->last_seen_at && $this->last_seen_at->gt(now()->subMinutes(5));
     }
-}
+
+    public function messages()
+    {
+    return $this->hasMany(\App\Models\Message::class, 'sender_id');
+    }
+
+    // Récupère la liste des utilisateurs avec qui on a eu une conversation
+    public function conversations()
+    {
+    $sentTo = \App\Models\Message::where('sender_id', $this->id)
+        ->select('receiver_id as user_id')
+        ->distinct();
+
+    $receivedFrom = \App\Models\Message::where('receiver_id', $this->id)
+        ->select('sender_id as user_id')
+        ->distinct();
+
+    $userIds = $sentTo->union($receivedFrom)->pluck('user_id');
+
+    return \App\Models\User::whereIn('id', $userIds)->get();
+    }
+
+    }
+
+
+
