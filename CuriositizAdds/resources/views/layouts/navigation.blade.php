@@ -34,15 +34,11 @@
 
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex  btn-outline-primary">
                     <x-nav-link :href=" route('login')" :active="request()->routeIs('dashboard')">
-                   Connexion
+                   Connexion/Inscription
                     </x-nav-link>
                 </div>       
 
-                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex  btn-primary text-bg-primary">
-                    <x-nav-link :href="route('chat.index')" :active="request()->routeIs('dashboard')">
-                   Inscription
-                    </x-nav-link>
-                </div>                
+                     
           
 
             </div>
