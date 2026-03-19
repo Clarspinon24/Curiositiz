@@ -34,11 +34,23 @@
 
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex  btn-outline-primary">
                     <x-nav-link :href=" route('login')" :active="request()->routeIs('dashboard')">
+<<<<<<< HEAD
                    Connexion/Inscription
                     </x-nav-link>
                 </div>       
 
                      
+=======
+                   Connexion
+                    </x-nav-link>
+                </div>       
+
+                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex  btn-primary text-bg-primary">
+                    <x-nav-link :href="route('chat.index')" :active="request()->routeIs('dashboard')">
+                   Inscription
+                    </x-nav-link>
+                </div>                
+>>>>>>> b5dfcfd805e56bf6162a997048efe1ee982b3fc2
           
 
             </div>

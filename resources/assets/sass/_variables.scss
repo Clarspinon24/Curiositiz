@@ -1,0 +1,32 @@
+@use "sass:color";
+
+// Body
+$body-bg: #f5f8fa;
+
+// Borders
+$laravel-border-color: color.adjust($body-bg, $lightness: -10%);
+
+// Brands
+$brand-primary: #3097D1;
+$brand-info: #8eb4cb;
+$brand-success: #2ab27b;
+$brand-warning: #cbb956;
+$brand-danger: #bf5329;
+
+// Colors
+$white: #fff;
+$grey: #474747;
+$raspberry: #0c7aa6;
+$strawberry: #1d3557;
+
+// Typography
+$font-family-sans-serif: "Raleway", sans-serif;
+$text-color: #636b6f;
+
+// Inputs
+$input-border: color.adjust($text-color, $lightness: 40%);
+$input-border-focus: color.adjust($brand-primary, $lightness: 25%);
+$input-color-placeholder: color.adjust($text-color, $lightness: 30%);
+
+// Panels
+$panel-default-heading-bg: #fff;

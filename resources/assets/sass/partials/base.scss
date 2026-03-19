@@ -1,0 +1,72 @@
+body {
+  font-family: 'Poppins', sans-serif !important;
+  font-size: 10pt !important;
+  background-color: #f5f5f5;
+}
+
+h1,
+h2,
+h3 {
+  font-family: 'Montserrat', sans-serif !important;
+  font-weight: bolder;
+}
+
+p {
+  opacity: 0.7;
+  line-height: 20pt;
+}
+
+a {
+  transition: 0.2s;
+}
+
+a:hover {
+  color: $strawberry !important;
+  text-decoration: none !important;
+}
+
+.nav-link {
+  color: $grey;
+}
+
+.nav-link:hover {
+  color: $strawberry;
+}
+
+.welcome {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+
+  .welcome-title {
+    color: $raspberry !important;
+  }
+}
+
+.page-item .page-link {
+  color: $raspberry !important;
+}
+
+.rounded-circle {
+  object-fit: cover;
+  margin: 2rem;
+}
+
+.img-fluid {
+  object-fit: cover;
+}
+
+@media screen and (max-width: 1100px){
+  .auth-title{
+    font-size: 14px;
+  }
+  .auth-subtitle{
+    font-size: 12px;
+  }
+  h3{
+    font-size: 15px;
+  }
+}

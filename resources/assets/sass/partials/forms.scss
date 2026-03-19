@@ -1,0 +1,54 @@
+// Form input & label
+
+label {
+  font-size: 10pt !important;
+  color: $raspberry;
+  font-weight: bold;
+}
+
+.form-control {
+  border: 1.5px solid rgba($raspberry, 0.5) !important;
+  font-size: 10pt !important;
+  padding: 0.7rem 0.75rem !important;
+  transition: 0.3s !important;
+  height: 45px;
+}
+
+.form-control:focus {
+  border-color: $raspberry !important;
+  color: $raspberry !important;
+  box-shadow: none !important;
+}
+
+.form-control-sm {
+  border: 1.5px solid rgba($raspberry, 0.5) !important;
+  font-size: 10pt !important;
+  padding: 0.5rem 0.5rem !important;
+  transition: 0.3s !important;
+}
+
+.form-control:focus {
+  border-color: $raspberry !important;
+  color: $raspberry !important;
+  box-shadow: none !important;
+}
+
+.form-control-sm:focus {
+  border-color: $raspberry !important;
+  color: $raspberry !important;
+  box-shadow: none !important;
+}
+.form-text a{
+  font-size: 10pt;
+  color: $grey !important;
+}
+.form-text a:hover{
+  color: $strawberry !important;
+}
+// Form Button
+.submit-form-button {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+

@@ -1,0 +1,44 @@
+// FontAwesome
+@import "@fortawesome/fontawesome-free/scss/fontawesome";
+@import "@fortawesome/fontawesome-free/scss/solid";
+@import "@fortawesome/fontawesome-free/scss/regular";
+@import "@fortawesome/fontawesome-free/scss/brands";
+
+// Bootstrap
+@import "bootstrap/scss/bootstrap";
+
+// Variables
+@import "variables";
+
+// Custom
+body.bg-dark {
+  background-color: $raspberry !important;
+}
+
+.navbar.bg-dark {
+  background-color: $raspberry !important;
+}
+
+.navbar-dark .navbar-nav .nav-link {
+  color: $white !important;
+}
+
+.content-wrapper {
+  padding-top: 70px;
+  padding-bottom: 30px;
+  min-height: 90vh;
+}
+
+.table {
+  th {
+    //width: 100%;
+  }
+}
+
+.card-block {
+  padding: 20px;
+}
+
+.card .card-title {
+  font-weight: bold;
+}
