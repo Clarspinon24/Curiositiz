@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\RateController; 
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\WorkshopController;
@@ -43,7 +44,7 @@ Route::get('/contact', [ContactController::class, 'show'])->name('contact');
 Route::post('/contact/send', [ContactController::class, 'send'])->name('contact.send');
 
 /* WORKSHOP */
-Route::resource('/workshop', WorkshopController::class);
+Route::resource('/workshop', WorkshopController::class)->parameters(['workshop' => 'slug']);
 Route::post('/workshop/{slug}/participate', [WorkshopController::class, 'validateParticipation'])->name('workshop.participate');
 Route::get('/workshop/{id}/delete', [WorkshopController::class, 'destroy'])->name('workshop.delete');
 Route::get('/workshop/{slug}/next', [WorkshopController::class, 'nextWS'])->name('workshop.next');
@@ -56,6 +57,10 @@ Route::get('/cgu', [LegalController::class, 'cgu'])->name('legal.cgu');
 Route::get('/cgu/validate', [LegalController::class, 'validation'])->name('legal.validate');
 Route::get('/cgu/validate/accepted', [LegalController::class, 'acceptCGU'])->name('accept_cgu');
 Route::post('/curiositiz-admin', [LegalController::class, 'store'])->name('legal.store');
+
+/* RATES */
+Route::post('/rate', [RateController::class, 'store'])->name('rate.store');
+Route::delete('/rate/{rate}', [RateController::class, 'destroy'])->name('rate.destroy');
 
 /* ADMIN */
 Route::get('/curiositiz-admin', [AdminController::class, 'index'])->name('admin');

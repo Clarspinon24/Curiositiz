@@ -11,7 +11,8 @@
     <title>Curiositiz Administration</title>
 
     <!-- Styles -->
-    <link href="{{ asset('css/admin.css') }}" rel="stylesheet">
+    @vite(['resources/assets/sass/admin.scss'])
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
 <body class="fixed-nav sticky-footer bg-dark" id="page-top">
 <!-- Navigation-->
@@ -26,32 +27,28 @@
         <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
             <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
                 <a class="nav-link" href="{{ route('admin') }}">
-                    <i class="fa fa-fw fa-dashboard"></i>
+                    <i class="fa fa-fw fa-tachometer-alt"></i>
                     <span class="nav-link-text">Dashboard</span>
                 </a>
             </li>
-
             <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Link">
                 <a class="nav-link" href="{{ route('admin.user.index') }}">
                     <i class="fa fa-fw fa-users"></i>
                     <span class="nav-link-text">Utilisateurs</span>
                 </a>
             </li>
-
             <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Link">
                 <a class="nav-link" href="{{ route('admin.workshop.index') }}">
                     <i class="fa fa-fw fa-calendar"></i>
                     <span class="nav-link-text">Ateliers</span>
                 </a>
             </li>
-
             <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Link">
                 <a class="nav-link" href="{{ route('admin.rate.index') }}">
                     <i class="fa fa-fw fa-star"></i>
                     <span class="nav-link-text">Notations</span>
                 </a>
             </li>
-
             <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Link">
                 <a class="nav-link" href="{{ route('admin.sheet.index') }}">
                     <i class="fa fa-fw fa-th"></i>
@@ -61,20 +58,21 @@
         </ul>
         <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-                <a class="nav-link"  href="{{ route("home") }}">
-                    <i class="fa fa-fw fa-sign-out"></i> Retour au site</a>
+                <a class="nav-link" href="{{ route('home') }}">
+                    <i class="fa fa-fw fa-sign-out-alt"></i> Retour au site
+                </a>
             </li>
         </ul>
     </div>
 </nav>
 <div class="content-wrapper bg-light">
-    <div class="container-fluid ">
+    <div class="container-fluid">
         @yield('content')
     </div>
 </div>
 
-<script src="{{asset('assets/js/admin-vendor.js')}}"></script>
-<script src="{{asset('assets/js/admin-sb.js')}}"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
 </html>

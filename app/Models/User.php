@@ -30,10 +30,6 @@ class User extends Authenticatable
         'password'          => 'hashed',
     ];
 
-    /**
-     * Send the password reset notification.
-     * Signature must match parent without return type hint.
-     */
     public function sendPasswordResetNotification($token): void
     {
         $this->notify(new PasswordReset($token));
@@ -177,5 +173,15 @@ class User extends Authenticatable
         }
 
         return $ratesCount > 0 ? round($ratings / $ratesCount, 2) : -1;
+    }
+
+    // Nombre total d'avis reçus sur tous les ateliers
+    public function getRatingCount(): int
+    {
+        $count = 0;
+        foreach ($this->workshop as $workshop) {
+            $count += $workshop->rates()->where('status', 1)->count();
+        }
+        return $count;
     }
 }

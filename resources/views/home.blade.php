@@ -46,152 +46,130 @@
                                         <option value="{{ $code }}">({{ $code }}) {{ $department }}</option>
                                     @endforeach
                                 </select>
-
                                 <button type="submit" class="btn btn-primary mb-2 mt-3 mt-md-0 ml-0 ml-md-3">Filtrer</button>
                             </form>
                         </div>
 
                         <div class="row justify-content-center">
                             @foreach($workshops as $workshop)
+                                @php $estTermine = strtotime($workshop->date) < strtotime(date('Y/m/d')); @endphp
 
-                                @if(strtotime($workshop->date) > strtotime(date('Y/m/d')))
+                                <div class="col-md-12 card-workshop mb-1 mb-md-3"
+                                     style="{{ $estTermine ? 'filter: grayscale(100%); opacity: 0.5;' : '' }}">
+                                    <a href="{{ route('workshop.show', $workshop->slug) }}">
+                                        <div class="row pl-1 pr-1">
+                                            @if($workshop->picture)
+                                                <div class="col" style="background-image: url('{{asset('/images/workshops/'.$workshop->picture)}}'); background-repeat: no-repeat; background-position: center; background-size: contain;"></div>
+                                            @else
+                                                <div class="col" style="background-color: gray"></div>
+                                            @endif
 
-                                    <div class="col-md-12 card-workshop mb-1 mb-md-3">
-                                        <a href="{{ route("workshop.show", ["slug" => $workshop->slug]) }}">
-                                            <div class="row pl-1 pr-1">
-                                                @if($workshop->picture)
-                                                    <div class="col"
-                                                            style="background-image: url('{{asset('/images/workshops/'.$workshop->picture)}}'); background-repeat: no-repeat; background-position: center; background-size: contain;">
-
-                                                    </div>
-                                                @else
-                                                    <div class="col" style="background-color: gray"></div>
-                                                @endif
-                                                {{------------------------------------------ DESKTOP --------------------------------------------------------------------------}}
-                                                <div class="col-9 pt-1 pb-1 d-none d-md-block">
-                                                    <div class="row">
-                                                        <div class="col">
-                                                            <div class="card-workshop-title">
-                                                                {{ $workshop->name }}
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="row pt-3">
-                                                        <div class="col-4">
-                                                            {{--TRANCHE D'AGE DE L'ATELIER--}}
-                                                            @if($workshop->age_mini == 1)
-                                                                <div>{{ $workshop->age_mini }} an
-                                                                    - {{ $workshop->age_maxi }} ans
-                                                                </div>
-                                                            @else
-                                                                <div>{{ $workshop->age_mini }} ans
-                                                                    - {{ $workshop->age_maxi }} ans
-                                                                </div>
+                                            {{-- DESKTOP --}}
+                                            <div class="col-9 pt-1 pb-1 d-none d-md-block">
+                                                <div class="row">
+                                                    <div class="col">
+                                                        <div class="card-workshop-title">
+                                                            {{ $workshop->name }}
+                                                            @if($estTermine)
+                                                                <span class="badge badge-secondary ml-2">Terminé</span>
                                                             @endif
-
-                                                            {{--PLACE RESTANTES DANS L'ATELIER--}}
-                                                            @if($workshop->effectif_max > 0)
-                                                                <div>{{ $workshop->effectif_max}} places restantes
-                                                                </div>
-                                                            @else
-                                                                <div> Complet</div>
-                                                            @endif
-
-                                                            {{-- inscrit
-                                                            <div>{{ $workshop->maximum - $workshop->effectif_max }}
-                                                                personnes inscrites
-                                                            </div>
-                                                            --}}
-
-
-                                                        </div>
-                                                        <div class="col-4">
-                                                            <div>{{ $workshop->begining}} - {{ $workshop->end }}</div>
-                                                            <div> {{ $workshop->date->format('d/m/Y') }} </div>
-                                                            <div>{{ $workshop->price }}
-                                                                €/personne
-                                                            </div>
-                                                            <div>{{ $workshop->city }}
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-4">
-                                                            <div class="d-flex align-items-center" style="height: 100%;">
-                                                                <div>
-                                                                    <img src="{{ $workshop->user->avatar() }}" alt="" class="img-responsive" height="60" width="60">
-                                                                </div>
-                                                                <div class="ml-2">
-                                                                    {{ $workshop->user->firstname }} <br>
-                                                                    @if($workshop->user->getRating() === -1)
-
-                                                                    @else
-                                                                        {{ $workshop->user->getRating() }}/5 <i class="fa fa-fw fa-star"></i>
-                                                                    @endif
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="row pt-3">
-                                                        <div class="col-12">
-                                                            {{ str_limit($workshop->description, $limit = 50, $end = '...') }}
                                                         </div>
                                                     </div>
                                                 </div>
-                                                {{------------------------------------------MOBILE------------------------------------------------}}
-                                                <div class="col-8 pt-1 pb-1 d-sm-block d-md-none">
-                                                    <div class="row">
-                                                        <div class="col">
-                                                            <div class="card-workshop-title">
-                                                                {{ $workshop->name }}
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="row">
-                                                        <div class="col-8">
-                                                            {{--TRANCHE D'AGE DE L'ATELIER--}}
-                                                            @if($workshop->age_mini == 1)
-                                                                <div>{{ $workshop->age_mini }} an
-                                                                    - {{ $workshop->age_maxi }} ans
-                                                                </div>
+                                                <div class="row pt-3">
+                                                    <div class="col-4">
+                                                        @if($workshop->age_mini == 1)
+                                                            <div>{{ $workshop->age_mini }} an - {{ $workshop->age_maxi }} ans</div>
+                                                        @else
+                                                            <div>{{ $workshop->age_mini }} ans - {{ $workshop->age_maxi }} ans</div>
+                                                        @endif
+                                                        @if(!$estTermine)
+                                                            @if($workshop->effectif_max > 0)
+                                                                <div>{{ $workshop->effectif_max }} places restantes</div>
                                                             @else
-                                                                <div>{{ $workshop->age_mini }} ans
-                                                                    - {{ $workshop->age_maxi }} ans
-                                                                </div>
+                                                                <div>Complet</div>
                                                             @endif
-
-                                                            <div>{{ $workshop->begining}} - {{ $workshop->end }}</div>
-                                                            <div>{{ $workshop->date->format('d/m/Y') }}</div>
-                                                            <div>{{ $workshop->city }}
-                                                                {{--PLACE RESTANTES DANS L'ATELIER--}}
-                                                                @if($workshop->effectif_max > 0)
-                                                                    <div>{{ $workshop->effectif_max}} places restantes
-                                                                    </div>
-                                                                @else
-                                                                    <div> Complet</div>
+                                                        @endif
+                                                    </div>
+                                                    <div class="col-4">
+                                                        <div>{{ $workshop->begining }} - {{ $workshop->end }}</div>
+                                                        <div>{{ $workshop->date->format('d/m/Y') }}</div>
+                                                        <div>{{ $workshop->price }} €/personne</div>
+                                                        <div>{{ $workshop->city }}</div>
+                                                    </div>
+                                                    <div class="col-4">
+                                                        <div class="d-flex align-items-center" style="height: 100%;">
+                                                            <div>
+                                                                <img src="{{ $workshop->user->avatar() }}" alt="" class="img-responsive" height="60" width="60">
+                                                            </div>
+                                                            <div class="ml-2">
+                                                                {{ $workshop->user->firstname }} <br>
+                                                                @if($workshop->user->getRating() !== -1)
+                                                                    {{ $workshop->user->getRating() }}/5
+                                                                    <i class="fa fa-fw fa-star text-warning"></i>
+                                                                    <small>({{ $workshop->user->getRatingCount() }} avis)</small>
                                                                 @endif
                                                             </div>
                                                         </div>
-                                                        <div class="col-4 pl-0">
-                                                            <div class="d-flex align-items-center" style="height: 100%;">
-                                                                <div class="text-center">
-                                                                    <img src="{{ $workshop->user->avatar() }}" alt="" class="img-responsive" height="20" width="20">
+                                                    </div>
+                                                </div>
+                                                <div class="row pt-3">
+                                                    <div class="col-12">
+                                                        {{ \Illuminate\Support\Str::limit($workshop->description, 50, '...') }}
+                                                    </div>
+                                                </div>
+                                            </div>
 
-                                                                    <div class="mt-2">
-                                                                        {{ $workshop->user->firstname }} <br>
-                                                                        @if($workshop->user->getRating() === -1)
-
-                                                                        @else
-                                                                            {{ $workshop->user->getRating() }}/5 <i class="fa fa-fw fa-star"></i>
-                                                                        @endif
-                                                                    </div>
+                                            {{-- MOBILE --}}
+                                            <div class="col-8 pt-1 pb-1 d-sm-block d-md-none">
+                                                <div class="row">
+                                                    <div class="col">
+                                                        <div class="card-workshop-title">
+                                                            {{ $workshop->name }}
+                                                            @if($estTermine)
+                                                                <span class="badge badge-secondary ml-2">Terminé</span>
+                                                            @endif
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-8">
+                                                        @if($workshop->age_mini == 1)
+                                                            <div>{{ $workshop->age_mini }} an - {{ $workshop->age_maxi }} ans</div>
+                                                        @else
+                                                            <div>{{ $workshop->age_mini }} ans - {{ $workshop->age_maxi }} ans</div>
+                                                        @endif
+                                                        <div>{{ $workshop->begining }} - {{ $workshop->end }}</div>
+                                                        <div>{{ $workshop->date->format('d/m/Y') }}</div>
+                                                        <div>{{ $workshop->city }}</div>
+                                                        @if(!$estTermine)
+                                                            @if($workshop->effectif_max > 0)
+                                                                <div>{{ $workshop->effectif_max }} places restantes</div>
+                                                            @else
+                                                                <div>Complet</div>
+                                                            @endif
+                                                        @endif
+                                                    </div>
+                                                    <div class="col-4 pl-0">
+                                                        <div class="d-flex align-items-center" style="height: 100%;">
+                                                            <div class="text-center">
+                                                                <img src="{{ $workshop->user->avatar() }}" alt="" class="img-responsive" height="20" width="20">
+                                                                <div class="mt-2">
+                                                                    {{ $workshop->user->firstname }} <br>
+                                                                    @if($workshop->user->getRating() !== -1)
+                                                                        {{ $workshop->user->getRating() }}/5
+                                                                        <i class="fa fa-fw fa-star text-warning"></i>
+                                                                        <small>({{ $workshop->user->getRatingCount() }} avis)</small>
+                                                                    @endif
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </a>
-                                    </div>
-                                @endif
+                                        </div>
+                                    </a>
+                                </div>
                             @endforeach
                         </div>
                     </div>

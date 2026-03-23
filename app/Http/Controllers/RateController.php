@@ -14,17 +14,41 @@ class RateController extends Controller
         $this->middleware('profilUncomplet');
     }
 
-    public function index(): void {}
+    // Enregistrer une nouvelle note
+    public function store(Request $request)
+    {
+        // Validation des données
+        $request->validate([
+            'workshop_id' => 'required|exists:workshop,id',
+            'rate'        => 'required|integer|min:1|max:5',
+            'comment'     => 'nullable|string|max:500',
+        ]);
 
-    public function create(): void {}
+        // Vérifier si l'user a déjà noté ce workshop
+        if (Rate::alreadyRated(auth()->id(), $request->workshop_id)) {
+            return back()->with('error', 'Vous avez déjà noté cet atelier.');
+        }
 
-    public function store(Request $request): void {}
+        // Créer la note
+        Rate::create([
+            'user_id'     => auth()->id(),
+            'workshop_id' => $request->workshop_id,
+            'rate'        => $request->rate,
+            'comment'     => $request->comment,
+            'status'      => 1,
+        ]);
 
-    public function show(Rate $rate): void {}
+        return back()->with('success', 'Votre avis a été enregistré !');
+    }
 
-    public function edit(Rate $rate): void {}
+    // Supprimer une note
+    public function destroy(Rate $rate)
+    {
+        // Vérifier la permission via la Policy
+        $this->authorize('delete', $rate);
 
-    public function update(Request $request, Rate $rate): void {}
+        $rate->delete();
 
-    public function destroy(Rate $rate): void {}
+        return back()->with('success', 'Avis supprimé.');
+    }
 }

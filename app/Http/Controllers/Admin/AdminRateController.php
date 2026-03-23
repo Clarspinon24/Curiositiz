@@ -2,11 +2,9 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Requests\StoreRateRequest;
 use App\Models\Rate;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Redirect;
 
 class AdminRateController extends Controller
 {
@@ -22,11 +20,6 @@ class AdminRateController extends Controller
         return view('admin.rate.index', compact('rates'));
     }
 
-    public function create()
-    {
-        return view('admin.rate.create');
-    }
-
     public function status(int $id)
     {
         $rate = Rate::findOrFail($id);
@@ -36,15 +29,9 @@ class AdminRateController extends Controller
         return back()->with('message', 'Le status de la note a bien été modifié !');
     }
 
-    public function store(StoreRateRequest $request)
+    public function destroy(int $id)
     {
-        Rate::create([
-            'user_id'     => $request->input('user_id'),
-            'workshop_id' => $request->input('workshop_id'),
-            'status'      => 1,
-            'rate'        => $request->input('rate'),
-        ]);
-
-        return Redirect::back()->with('message', 'Note ajoutée avec succès !');
+        Rate::findOrFail($id)->delete();
+        return back()->with('message', 'La notation a bien été supprimée !');
     }
 }
