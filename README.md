@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+# Curiositiz
+Repo pour refonte du site curiositiz 
+=======
 # Curiositiz 
 This git is used to  **Curiositiz** plateform.
 
@@ -72,3 +76,4 @@ This git is used to  **Curiositiz** plateform.
 
 ---
 <br/>
+>>>>>>> b5dfcfd805e56bf6162a997048efe1ee982b3fc2
