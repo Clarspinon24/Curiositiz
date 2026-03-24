@@ -68,7 +68,7 @@
                                     </div>
                                     <div class="row pt-3">
                                         <div class="col-12">
-                                            <div>{{ str_limit($workshop->description, $limit = 50, $end = '...') }}</div>
+                                            <div>{{ \Illuminate\Support\Str::limit($workshop->description, 50, '...') }}</div>
                                         </div>
                                     </div>
                                     <div class="row pt-3 pb-2">
