@@ -36,7 +36,7 @@ class UserController extends Controller
 
     public function edit(string $slug): View|RedirectResponse
     {
-        $user      = User::where('slug', $slug)->first();
+       $user = User::where('slug', $slug)->firstOrFail();
         $imageLink = $user->avatar();
 
         if (Auth::user()->slug !== $user->slug) {
