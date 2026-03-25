@@ -134,8 +134,9 @@
                             <hr class="sidebar-divider-nav">
                             <ul class="sidebar-list">
                                 <li class="sidebar-item">
-                                    <a class="sidebar-button" href="{{ route('user.edit', Auth::user()->id) }}">Mon profil</a>
+                                    <a class="sidebar-button" href="{{route('user.edit', Auth::user()->slug) }}">Mon profil</a>
                                 </li>
+                                
                                 <li class="sidebar-item">
                                     <a class="sidebar-button" href="{{ route('contact') }}">Nous contacter</a>
                                 </li>
@@ -211,7 +212,7 @@
                 <hr class="sidebar-divider-nav">
                 <ul class="sidebar-list">
                     <li class="sidebar-item">
-                        <a class="sidebar-button" href="{{ route('user.edit', Auth::user()->id) }}">Mon profil</a>
+                        <a class="sidebar-button" href="{{ route('user.edit', Auth::user()->slug) }}">Mon profil</a>
                     </li>
                     <li class="sidebar-item">
                         <a class="sidebar-button" href="{{ route('contact') }}">Nous contacter</a>

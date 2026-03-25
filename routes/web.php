@@ -18,6 +18,7 @@ use App\Http\Controllers\Admin\AdminUserController;
 use App\Http\Controllers\Admin\AdminWorkshopController;
 use App\Http\Controllers\Admin\AdminNetworkController;
 use App\Http\Controllers\Admin\AdminRateController;
+use App\Http\Controllers\ChatController;
 
 /*
 |--------------------------------------------------------------------------
@@ -62,6 +63,15 @@ Route::post('/curiositiz-admin', [LegalController::class, 'store'])->name('legal
 Route::post('/rate', [RateController::class, 'store'])->name('rate.store');
 Route::delete('/rate/{rate}', [RateController::class, 'destroy'])->name('rate.destroy');
 
+/* CHAT */
+Route::middleware(['auth'])->group(function () {
+    Route::get('/chat', [ChatController::class, 'index'])->name('chat.index');
+    Route::get('/chat/{conversation}', [ChatController::class, 'show'])->name('chat.show');
+    Route::post('/chat/{conversation}', [ChatController::class, 'store'])->name('chat.store');
+    Route::get('/chat/{conversation}/poll', [ChatController::class, 'poll'])->name('chat.poll');
+    Route::get('/workshop/{workshop}/chat', [ChatController::class, 'createOrShow'])->name('chat.create');
+});
+
 /* ADMIN */
 Route::get('/curiositiz-admin', [AdminController::class, 'index'])->name('admin');
 Route::name('admin.')->prefix('curiositiz-admin')->group(function () {
@@ -74,4 +84,7 @@ Route::name('admin.')->prefix('curiositiz-admin')->group(function () {
     Route::resource('/network', AdminNetworkController::class)->names('network');
     Route::resource('/rate', AdminRateController::class)->names('rate');
     Route::get('/rate/{id}/status', [AdminRateController::class, 'status'])->name('rate.status');
+
+
+
 });
