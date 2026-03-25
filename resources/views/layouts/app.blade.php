@@ -11,7 +11,7 @@
     <title>{{ config('app.name', 'Curiositiz') }}</title>
 
     <!-- Styles -->
-    @vite(['resources/assets/sass/main.scss', 'resources/assets/js/main.js'])
+    @vite(['resources/assets/sass/main.scss'])
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css"
           integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Montserrat|Poppins" rel="stylesheet">
@@ -136,7 +136,6 @@
                                 <li class="sidebar-item">
                                     <a class="sidebar-button" href="{{route('user.edit', Auth::user()->slug) }}">Mon profil</a>
                                 </li>
-                                
                                 <li class="sidebar-item">
                                     <a class="sidebar-button" href="{{ route('contact') }}">Nous contacter</a>
                                 </li>
@@ -267,6 +266,8 @@
 @yield('content')
 
 <!-- Scripts -->
-<script></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+@vite(['resources/assets/js/main.js'])
 </body>
 </html>

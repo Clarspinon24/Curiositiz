@@ -139,23 +139,23 @@ class WorkshopController extends Controller
         return view('workshop.next', compact('workshops', 'user', 'participations'));
     }
 
-    public function validateParticipation(Request $request, int $id): RedirectResponse
-    {
-        $workshops               = Workshop::where('id', $id)->firstOrFail();
-        $workshops->effectif_max = $workshops->effectif_max - $request->get('participants');
-        $workshops->save();
+    public function validateParticipation(Request $request, string $slug): RedirectResponse
+{
+    $workshops               = Workshop::where('slug', $slug)->firstOrFail();
+    $workshops->effectif_max = $workshops->effectif_max - $request->get('participants');
+    $workshops->save();
 
-        $participation               = new Participation();
-        $participation->user_id      = Auth::user()->id;
-        $participation->workshop_id  = $workshops->id;
-        $participation->participants = $request->get('participants');
-        $participation->save();
+    $participation               = new Participation();
+    $participation->user_id      = Auth::user()->id;
+    $participation->workshop_id  = $workshops->id;
+    $participation->participants = $request->get('participants');
+    $participation->save();
 
-        $user = Auth::user()->slug;
+    $user = Auth::user()->slug;
 
-        return redirect()->route('workshop.next', compact('user'))
-            ->with('message', "Votre participation à l'atelier est confirmée");
-    }
+return redirect()->route('workshop.next', ['slug' => $user])
+    ->with('message', "Votre participation à l'atelier est confirmée");
+}
 
     public function destroyParticipation(int $id): RedirectResponse
     {
@@ -171,8 +171,8 @@ class WorkshopController extends Controller
 
         $user = Auth::user()->slug;
 
-        return redirect()->route('workshop.next', compact('user'))
-            ->with('message', "Votre participation à l'atelier est annulée");
+return redirect()->route('workshop.next', ['slug' => $user])
+    ->with('message', "Votre participation à l'atelier est annulée");
     }
 
     public function showParticipation(int $id): View

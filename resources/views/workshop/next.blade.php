@@ -1,4 +1,5 @@
 @extends('layouts.app')
+@use('Illuminate\Support\Str')
 
 @section('content')
 
@@ -90,7 +91,7 @@
                                                 </div>
                                                 <div class="row pt-3">
                                                     <div class="col-12">
-                                                        {{ str_limit($workshop->description, $limit = 50, $end = '...') }}
+                                                        {{ Str::limit($workshop->description, 50, '...') }}
                                                     </div>
                                                 </div>
                                                 <div class="row mt-3">
