@@ -79,9 +79,21 @@
                                             data-target="#exampleModalCenter">Réserver
                                     </button>
                                 </div>
-                            </div>
+                        
                         @endif
+
+                    @auth
+                    @if($workshop->user_id !== Auth::id())
+                    
+                    <div class="col-md-6">
+                    <a href="{{ route('chat.create', $workshop->slug) }}" class="btn btn-outline-primary w-100 m-2">
+                     Contacter l'organisateur
+                    </a>    
+                </div>    
                     </div>
+                    @endif
+                    @endauth
+                </div>
                 </div>
 
                 {{-- MODAL PARTICIPANTS --}}

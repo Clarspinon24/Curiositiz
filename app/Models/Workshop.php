@@ -26,6 +26,11 @@ class Workshop extends Model
         return $this->belongsTo(User::class);
     }
 
+    public function getRouteKeyName(): string
+    {
+        return 'slug';
+    }
+
     public function participations(): HasMany
     {
         return $this->hasMany(Participation::class);

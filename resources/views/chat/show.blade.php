@@ -589,8 +589,8 @@
 
         {{-- Image atelier --}}
         <div class="workshop-img">
-            @if($workshop->picture)
-                <img src="{{ asset('storage/' . $workshop->picture) }}" alt="{{ $workshop->name }}">
+            @if($workshop->picture)      
+                <img src="{{ asset('images/workshops/' . $workshop->picture) }}" ...>
             @else
                 <i class="fas fa-image"></i>
             @endif
