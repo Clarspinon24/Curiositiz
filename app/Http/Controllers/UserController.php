@@ -36,7 +36,12 @@ class UserController extends Controller
 
     public function edit(string $slug): View|RedirectResponse
     {
-        $user      = User::where('slug', $slug)->first();
+        $user = User::where('slug', $slug)->first();
+
+        if (!$user) {
+            return redirect()->route('home');
+        }
+
         $imageLink = $user->avatar();
 
         if (Auth::user()->slug !== $user->slug) {
@@ -48,7 +53,12 @@ class UserController extends Controller
 
     public function update(UpdateProfil $request, string $slug): RedirectResponse
     {
-        $user         = User::where('slug', $slug)->first();
+        $user = User::where('slug', $slug)->first();
+
+        if (!$user) {
+            return redirect()->route('home');
+        }
+
         $passwordIsOk = password_verify($request->get('password'), Auth::user()->getAuthPassword());
         $noPassword   = empty(Auth::user()->password);
 
