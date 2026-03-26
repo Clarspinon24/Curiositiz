@@ -1,4 +1,5 @@
 @extends('layouts.app')
+@use('Illuminate\Support\Str')
 
 @section('content')
     <div class="site-content">
@@ -12,23 +13,24 @@
                 </p>
             </div>
 
-            <div class="row">
+            <div class="row d-flex align-items-stretch">
                 @if(count($sheets) > 0)
                     @foreach($sheets as $sheet)
                         {{-- Desktop --}}
-                        <div class="col-md-4 d-none d-md-block">
-                            <div class="card text-center">
+                        <div class="col-md-4 d-none d-md-flex" style="margin-bottom: 20px;">
+                            <div class="card text-center w-100">
                                 <img class="card-img-top" src="{{ asset('images/sheets/'.$sheet->image) }}"
-                                     alt="responsive-img">
-                                <div class="card-body">
+                                     alt="responsive-img" style="height: 220px; object-fit: cover;">
+                                <div class="card-body d-flex flex-column">
                                     <div class="card-age mx-auto d-block">
                                         {{$sheet->ageRange()}}
                                     </div>
                                     <div class="card-title">{{$sheet->title}}</div>
                                     <small>{{$sheet->user->name}} | {{$sheet->created_at}}</small>
-                                    <div class="card-text">
-                                        {{str_limit($sheet->content, 100)}}                                    </div>
-                                    <div class="card-button-group">
+                                    <div class="card-text mt-2 flex-grow-1">
+                                        {{ Str::limit($sheet->content, 100) }}
+                                    </div>
+                                    <div class="card-button-group mt-3">
                                         <a class="card-button-outline"
                                            href="{{ asset('pdf/sheets/').'/'.$sheet->file_name }}" target="_blank">Télécharger</a>
                                     </div>
@@ -40,7 +42,6 @@
                             <div class="row pl-1 pr-1 pt-2 pb-2">
                                 @if($sheet->image)
                                     <div class="col" style="background-image: url('{{asset('/images/sheets/'.$sheet->image)}}'); background-repeat: no-repeat; background-position: center; background-size: contain;">
-
                                     </div>
                                 @else
                                     <div class="col" style="background-color: gray"></div>
@@ -58,7 +59,7 @@
                                         </div>
                                         <div class="row pt-2">
                                             <div class="col-12">
-                                                <div>{{str_limit($sheet->content, 30)}}</div>
+                                                <div>{{ Str::limit($sheet->content, 30) }}</div>
                                             </div>
                                         </div>
                                         <div class="row justify-content-center">
@@ -68,7 +69,6 @@
                                             </div>
                                         </div>
                                     </div>
-
                             </div>
                         </div>
                     @endforeach

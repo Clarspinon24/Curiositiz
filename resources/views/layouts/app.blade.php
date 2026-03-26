@@ -130,6 +130,9 @@
                                 <li class="sidebar-item">
                                     <a class="sidebar-button" href="{{ route('workshop.mine', ['slug' => Auth::user()->slug]) }}">Mes ateliers publiés</a>
                                 </li>
+                                <li class="sidebar-item">
+                                    <a class="sidebar-button" href="{{ route('chat.index') }}">Mes messages</a>
+                                </li>
                             </ul>
                             <hr class="sidebar-divider-nav">
                             <ul class="sidebar-list">
@@ -206,6 +209,9 @@
                     </li>
                     <li class="sidebar-item">
                         <a class="sidebar-button" href="{{ route('workshop.mine', ['slug' => Auth::user()->slug]) }}">Mes ateliers publiés</a>
+                    </li>
+                    <li class="sidebar-item">
+                        <a class="sidebar-button" href="{{ route('chat.index') }}">Mes messages</a>
                     </li>
                 </ul>
                 <hr class="sidebar-divider-nav">
