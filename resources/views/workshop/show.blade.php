@@ -110,11 +110,13 @@
                             <div class="mt-3">
                                 <ul class="list-group">
                                     @foreach($workshop->participations as $participation)
+                                      @if($participation->user)
                                         <li class="list-group-item">
                                             {{ $participation->user->firstname }} {{ substr($participation->user->lastname, 0, 1) }}
                                             ({{ $participation->participants }}
                                             @if($participation->participants === 1) enfant) @else enfants) @endif
                                         </li>
+                                        @endif
                                     @endforeach
                                 </ul>
                             </div>
